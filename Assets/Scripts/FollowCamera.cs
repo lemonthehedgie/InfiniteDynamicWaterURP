@@ -1,33 +1,43 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class FollowCamera : MonoBehaviour
 {
     public Transform mainCamera;
-    public Transform TarargetPos;
+    public Transform TargetPos;
     public Transform player;
     public float Damping;
     public float aimSpeed;
     public float zoom;
     private float currentZoom;
     private Vector3 point;
+   private bool lastActive = false;
 
     private Vector3 m_CurrentVelocity;
     Vector3 m_DampedPos;
     private float newDamping;
 
+    public Volume UnderwaterVolume;
+    private WaterManager waterManager;
     void Start()
     {
         currentZoom = zoom;
+        waterManager = GetComponent<WaterManager>();
     }
 
     void OnEnable()
     {
-        if (TarargetPos != null)
+        if (TargetPos != null)
             m_DampedPos = mainCamera.position;
 
         newDamping = 0.5f;
+    }
+    float UnderwaterTween() {
+        float diff = mainCamera.position.y - waterManager.WaterHeightAtPosition(mainCamera.position);
+        return -Mathf.Clamp(diff, -10, 0)/10;
     }
 
     void Update()
@@ -38,14 +48,15 @@ public class FollowCamera : MonoBehaviour
         {
             newDamping = Damping;
         }
+        UnderwaterVolume.GetComponent<Volume>().weight = UnderwaterTween();
 
-        if (TarargetPos != null)
+        if (TargetPos != null)
         {
 
             //rotation
-            Vector3 positionDirection = player.position - TarargetPos.position;
+            Vector3 positionDirection = player.position - TargetPos.position;
             positionDirection.Normalize();
-            point = TarargetPos.position - (positionDirection * currentZoom);
+            point = TargetPos.position - (positionDirection * currentZoom);
 
             Vector3 desiredRot = new Vector3(player.rotation.eulerAngles.x, player.rotation.eulerAngles.y, 0f);
             Quaternion desiredFinal = Quaternion.Euler(desiredRot.x, desiredRot.y, desiredRot.z);
@@ -61,5 +72,10 @@ public class FollowCamera : MonoBehaviour
 
             transform.position = pos;
         }
+    }
+
+    private bool isUnderwater()
+    {
+        throw new NotImplementedException();
     }
 }

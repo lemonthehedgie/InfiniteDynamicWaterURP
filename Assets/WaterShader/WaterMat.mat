@@ -63,41 +63,41 @@ Material:
     - _FoamSpeed: 0.2
     - _FoamStrength: 1
     - _Metalic: 0
-    - _Metallic: 0.441
+    - _Metallic: 0.327
     - _NeightbourgDistance: 0.2
     - _NormalStrength: 0.2
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReflectionRefraction: 0.2
     - _Refraction: 0.1
-    - _RippleHeight: 2
+    - _RippleHeight: 3.91
     - _RippleRefractionStrength: 5
     - _RipplesNormalsMultiplier: 0.5
     - _Smoothness: 1
     - _WaterLerp: 0.5
-    - _WaveAmplitude: 0.05
-    - _WaveAmplitudeB: 0.1
-    - _WaveAmplitudeC: 0.1
-    - _WaveAmplitudeD: 0.05
-    - _WaveCDirectionX: 1
-    - _WaveCDirectionZ: 1
+    - _WaveAmplitude: 0.143
+    - _WaveAmplitudeB: 0.264
+    - _WaveAmplitudeC: 0.187
+    - _WaveAmplitudeD: 0.117
+    - _WaveCDirectionX: -0.59
+    - _WaveCDirectionZ: 0.85
     - _WaveDDirectionX: -1
-    - _WaveDDirectionZ: -0.5
+    - _WaveDDirectionZ: 0.75
     - _WaveFrequency: 1
     - _WaveFrequencyB: 0.5
     - _WaveFrequencyC: 0.2
     - _WaveFrequencyD: 0.3
-    - _WaveHeight: 0.5
-    - _WaveHeightB: 0.5
-    - _WaveHeightC: 0.5
-    - _WaveHeightD: 0.5
+    - _WaveHeight: 0.28
+    - _WaveHeightB: 1.53
+    - _WaveHeightC: 2.97
+    - _WaveHeightD: -0.95
     m_Colors:
     - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
     - _UV1: {r: 0.05, g: 0.05, b: 0, a: 0}
     - _UV2: {r: 0.03, g: 0.03, b: 0, a: 0}
-    - _WaterColor: {r: 0, g: 0.27466056, b: 1, a: 0}
-    - _WaterSpeed1: {r: 0.1, g: 0.1, b: 0, a: 0}
-    - _WaterSpeed2: {r: -0.1, g: 0, b: 0, a: 0}
+    - _WaterColor: {r: 0.4438857, g: 0.59395486, b: 0.990566, a: 0}
+    - _WaterSpeed1: {r: 0.05, g: 0.05, b: 0, a: 0}
+    - _WaterSpeed2: {r: -0.05, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &750131288559381829
 MonoBehaviour:
