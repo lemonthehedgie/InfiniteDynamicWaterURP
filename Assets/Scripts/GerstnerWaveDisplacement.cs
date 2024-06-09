@@ -2,6 +2,7 @@ using UnityEngine;
 
 public static class GerstnerWaveDisplacement
 {
+    public static float steepnessMultiplier = 0;
     private static Vector3 GerstnerWave(Vector3 position, float steepness, float wavelength, float speed, float direction)
     {
         direction = (direction * 2 - 1);
@@ -29,7 +30,8 @@ public static class GerstnerWaveDisplacement
     public static Vector3 GetWaveDisplacement(Vector3 position, float steepness, float wavelength, float speed, Vector4 directions, Texture2D ripplesTexture,
         Vector3 playerPos, float cameraSize, float rippleHeight, Transform waterObject)
     {
-
+        steepness = steepness * steepnessMultiplier;
+        Debug.Log(steepness);
         Vector3 offset = Vector3.zero;
 
         offset += GerstnerWave(position, steepness, wavelength, speed, directions.x);
