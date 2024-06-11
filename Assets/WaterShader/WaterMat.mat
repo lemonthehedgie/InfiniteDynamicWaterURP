@@ -75,10 +75,10 @@ Material:
     - _RipplesNormalsMultiplier: 0.5
     - _Smoothness: 1
     - _WaterLerp: 0.5
-    - _WaveAmplitude: 0.143
-    - _WaveAmplitudeB: 0.264
-    - _WaveAmplitudeC: 0.187
-    - _WaveAmplitudeD: 0.117
+    - _WaveAmplitude: 0.13
+    - _WaveAmplitudeB: 0.257
+    - _WaveAmplitudeC: 0
+    - _WaveAmplitudeD: 0.079
     - _WaveCDirectionX: -0.59
     - _WaveCDirectionZ: 0.85
     - _WaveDDirectionX: -1
@@ -87,10 +87,10 @@ Material:
     - _WaveFrequencyB: 0.5
     - _WaveFrequencyC: 0.2
     - _WaveFrequencyD: 0.3
-    - _WaveHeight: 0.28
-    - _WaveHeightB: 1.53
-    - _WaveHeightC: 2.97
-    - _WaveHeightD: -0.95
+    - _WaveHeight: 0.9
+    - _WaveHeightB: 1.5
+    - _WaveHeightC: -1.07
+    - _WaveHeightD: 4.36
     m_Colors:
     - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
     - _UV1: {r: 0.05, g: 0.05, b: 0, a: 0}

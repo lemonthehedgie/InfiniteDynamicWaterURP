@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 public class FollowCamera : MonoBehaviour
 {
+    public GameObject waterHigh;
     public Transform mainCamera;
     public Transform TargetPos;
     public Transform player;
@@ -14,7 +16,6 @@ public class FollowCamera : MonoBehaviour
     public float zoom;
     private float currentZoom;
     private Vector3 point;
-   private bool lastActive = false;
 
     private Vector3 m_CurrentVelocity;
     Vector3 m_DampedPos;
@@ -22,6 +23,8 @@ public class FollowCamera : MonoBehaviour
 
     public Volume UnderwaterVolume;
     private WaterManager waterManager;
+
+    private float waterHeightAtCamera;
     void Start()
     {
         currentZoom = zoom;
@@ -36,12 +39,13 @@ public class FollowCamera : MonoBehaviour
         newDamping = 0.5f;
     }
     float UnderwaterTween() {
-        float diff = mainCamera.position.y - waterManager.WaterHeightAtPosition(mainCamera.position);
+        float diff = mainCamera.position.y - waterHeightAtCamera;
         return -Mathf.Clamp(diff, -10, 0)/10;
     }
 
     void Update()
     {
+        waterHeightAtCamera = waterManager.WaterHeightAtPosition(mainCamera.position);
         currentZoom = zoom;
         newDamping -= Time.deltaTime;
         if (newDamping < Damping + 0.1f)
@@ -50,6 +54,13 @@ public class FollowCamera : MonoBehaviour
         }
         UnderwaterVolume.GetComponent<Volume>().weight = UnderwaterTween();
 
+        Transform waterTran = waterHigh.GetComponent<Transform>();
+        if (waterHeightAtCamera<0) {
+            Vector3 ls = waterTran.localScale;
+            waterTran.localScale = new Vector3(1,-1,1);
+        } else {
+            waterTran.localScale = new Vector3(1,1,1);
+        }
         if (TargetPos != null)
         {
 
@@ -72,10 +83,5 @@ public class FollowCamera : MonoBehaviour
 
             transform.position = pos;
         }
-    }
-
-    private bool isUnderwater()
-    {
-        throw new NotImplementedException();
     }
 }
